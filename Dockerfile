@@ -15,8 +15,8 @@ RUN apk add --no-cache bash nodejs && \
 
 WORKDIR /srv/gitbook
 
-VOLUME /srv/gitbook /srv/html
+VOLUME /srv/gitbook
 
-EXPOSE 4000 35729
+EXPOSE 4000
 
 CMD gitbook serve

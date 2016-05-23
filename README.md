@@ -1,5 +1,3 @@
 
-docker run -it --rm -v $(pwd):/srv/gitbook -v $(pwd)/html:/srv/html spohnan/gitbook bash
-gitbook init
-
-docker run -v $(pwd):/srv/gitbook -v $(pwd)/html:/srv/html -p 4000:4000 spohnan/gitbook
+docker run -v $(pwd):/srv/gitbook spohnan/gitbook "gitbook init"
+docker run -v $(pwd):/srv/gitbook -p 4000:4000 spohnan/gitbook
