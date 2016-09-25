@@ -2,15 +2,16 @@ FROM alpine:latest
 
 MAINTAINER Andy@AndySpohn.com
 
-ARG VERSION=3.0.0
+ARG VERSION=3.2.0
 
 LABEL version=$version
 
-RUN apk add --no-cache bash nodejs && \
-    npm install -g gitbook-cli &&\
-	gitbook fetch ${VERSION} &&\
-	npm cache clear &&\
-	rm -rf /tmp/* &&\
+RUN apk add --no-cache bash nodejs git && \
+    npm install -g gitbook-cli &&         \
+    npm install -g gitbook-convert &&     \
+	gitbook fetch ${VERSION} &&           \
+	npm cache clear &&                    \
+	rm -rf /tmp/* &&                      \
 	mkdir -p /srv
 
 WORKDIR /srv/gitbook
