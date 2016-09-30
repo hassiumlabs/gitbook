@@ -1,3 +1,27 @@
 
-docker run -v $(pwd):/srv/gitbook spohnan/gitbook "gitbook init"
-docker run -v $(pwd):/srv/gitbook -p 4000:4000 spohnan/gitbook
+## Gitbook Docker Image
+
+Install latest versions of Gitbook toolchain onto the node:slim base image
+
+
+## Usage
+
+I've included a Makefile with targets to the commonly used Gitbook commands
+
+## Example
+
+```
+# Create a new gitbook environment
+mkdir mybook
+cd mybook
+cp ../gitbook/Makefile .
+make init
+
+# Start the internal server. View in browser at http://localhost:4000
+make serve
+# hack, hack ... hack
+make stop
+
+# Create the HTML and PDF outputs
+make build
+```
