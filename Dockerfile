@@ -20,4 +20,4 @@ VOLUME /srv/gitbook
 
 EXPOSE 4000
 
-CMD gitbook --help
+CMD gitbook --version
