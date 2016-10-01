@@ -23,28 +23,26 @@ SERVE_CMD := @docker run               \
                --name "$(CONTAINER)"   \
                $(IMAGE) $(BIN)
 
-# No target argument passed
-nomatch:
-	@echo "Usage: make [buildimage|build|clean|init|pdf|serve|status|stop|themeinit|themebuild]"
+all: html pdf mobi
 
 # Rebuild the docker container
 # Must be run from the directory containing the Dockerfile
 buildimage:
 	@docker build -t $(IMAGE) .
 
-# --- Gitbook Actions
+# Gitbook Actions
 
 bookdir:
 	@mkdir -p _book
-
-build: mobi pdf
-	$(GITBOOK_CMD) build
 
 clean:
 	@rm -fr _book
 
 init: stop
 	$(GITBOOK_CMD) init
+
+html:
+	$(GITBOOK_CMD) build
 
 mobi: bookdir
 	$(GITBOOK_CMD) mobi . ./_book/$(BOOK_NAME).mobi
@@ -61,7 +59,7 @@ status:
 stop:
 	@docker kill $(shell docker ps --filter=\"name=$(CONTAINER)\" -q) > /dev/null 2>&1 || true
 
-# --- Gitbook Theme Actions
+# Gitbook Theme Actions
 # For use with themes such as https://github.com/GitbookIO/theme-default
 
 themeinit:
