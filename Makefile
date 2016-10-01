@@ -31,9 +31,11 @@ buildimage:
 
 # --- Gitbook Actions
 
-build:
+bookdir:
+	@mkdir -p _book
+
+build: mobi pdf
 	$(GITBOOK_CMD) build
-	$(GITBOOK_CMD) pdf . ./_book/book.pdf
 
 clean:
 	@rm -fr _book
@@ -41,8 +43,10 @@ clean:
 init: stop
 	$(GITBOOK_CMD) init
 
-pdf:
-	@mkdir -p _book
+mobi: bookdir
+	$(GITBOOK_CMD) mobi . ./_book/book.mobi
+
+pdf: bookdir
 	$(GITBOOK_CMD) pdf . ./_book/book.pdf
 
 serve:
