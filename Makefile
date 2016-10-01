@@ -2,6 +2,9 @@
 # Shortcuts to common Gitbook commands
 #
 
+# Change to the name you'd like to use for your book output files
+BOOK_NAME := book
+
 # Container meta-info
 BIN := gitbook
 REGISTRY ?= spohnan
@@ -44,10 +47,10 @@ init: stop
 	$(GITBOOK_CMD) init
 
 mobi: bookdir
-	$(GITBOOK_CMD) mobi . ./_book/book.mobi
+	$(GITBOOK_CMD) mobi . ./_book/$(BOOK_NAME).mobi
 
 pdf: bookdir
-	$(GITBOOK_CMD) pdf . ./_book/book.pdf
+	$(GITBOOK_CMD) pdf . ./_book/$(BOOK_NAME).pdf
 
 serve:
 	$(SERVE_CMD) serve > /dev/null 2>&1 &
