@@ -22,6 +22,9 @@ make serve
 # hack, hack ... hack
 make stop
 
-# Create the HTML and PDF outputs
-make build
+# Create all outputs
+make
+
+# Or just create specific outputs
+make html
 ```
