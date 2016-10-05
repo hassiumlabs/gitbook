@@ -1,5 +1,5 @@
 FROM node:slim
-MAINTAINER Andy@AndySpohn.com
+MAINTAINER andy@hassiumlabs.com
 
 RUN echo "deb http://http.debian.net/debian jessie-backports main" > /etc/apt/sources.list.d/backports.list && \
 	apt-get update && \
